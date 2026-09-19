@@ -1,0 +1,185 @@
+:root{
+  --bg: #14120D;
+  --bg-elevated: #1C1911;
+  --bg-card: #1F1B13;
+  --gold: #B08D3E;
+  --gold-light: #D9BD7C;
+  --cream: #F2ECDD;
+  --muted: #9C9384;
+  --line: rgba(242,236,221,0.12);
+  --line-strong: rgba(242,236,221,0.22);
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--bg);
+  color:var(--cream);
+  font-family:'Work Sans', sans-serif;
+  font-weight:300;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%; display:block;}
+a{color:inherit; text-decoration:none;}
+.wrap{max-width:1180px; margin:0 auto; padding:0 32px;}
+h1,h2,h3{font-family:'Fraunces', serif; font-weight:400; letter-spacing:-0.01em;}
+
+.photo-real{border:1px solid var(--line); overflow:hidden; min-height:280px; background:#000;}
+.photo-real img{width:100%; height:100%; object-fit:cover; display:block;}
+
+/* header simplificado — sem menu completo, propositalmente sem distrações */
+header{
+  position:sticky; top:0; z-index:50;
+  background:var(--bg);
+  border-bottom:1px solid var(--line);
+}
+header .wrap{
+  display:flex; align-items:center; justify-content:space-between;
+  height:84px; gap:20px;
+}
+.brand{display:flex; flex-direction:column; line-height:1.1;}
+.brand .initials{font-family:'Fraunces', serif; font-size:22px; letter-spacing:0.06em;}
+.brand .name{font-size:10px; color:var(--muted); letter-spacing:0.08em; margin-top:2px;}
+.back-link{
+  font-size:13px; color:var(--muted); white-space:nowrap;
+  border-bottom:1px solid transparent; transition:color 0.2s, border-color 0.2s;
+}
+.back-link:hover{color:var(--gold-light); border-color:var(--gold);}
+
+/* hero */
+.hero{padding:56px 0 88px;}
+.hero-grid{
+  display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;
+}
+.hero-photo{aspect-ratio:4/5;}
+.eyebrow{
+  font-size:13px; color:var(--gold-light); letter-spacing:0.04em; margin-bottom:18px;
+}
+.hero h1{
+  font-size:clamp(32px, 4vw, 48px); line-height:1.15; margin-bottom:20px;
+}
+.hero h1 em{color:var(--gold-light); font-style:normal;}
+.hero p.sub{
+  font-size:16px; color:var(--muted); max-width:46ch; margin-bottom:30px;
+}
+.btn-primary{
+  display:inline-block; background:var(--gold); color:var(--bg);
+  padding:15px 30px; font-size:14px; font-weight:500; letter-spacing:0.02em;
+  transition:background 0.2s; border:none; cursor:pointer;
+  font-family:'Work Sans', sans-serif;
+}
+.btn-primary:hover{background:var(--gold-light);}
+.btn-outline{
+  display:inline-block; border:1px solid var(--line-strong); color:var(--cream);
+  padding:14px 28px; font-size:14px; margin-left:14px;
+}
+.btn-outline:hover{border-color:var(--gold);}
+
+/* section shared */
+section{padding:88px 0;}
+.section-head{max-width:640px; margin-bottom:48px;}
+.section-head.center{max-width:640px; margin-left:auto; margin-right:auto; text-align:center;}
+.section-head .eyebrow{margin-bottom:14px;}
+.section-head h2{font-size:clamp(26px, 3vw, 36px); line-height:1.2;}
+
+/* blocos O que é / Para quem é / Como atua */
+.protocolo-blocks{
+  display:grid; grid-template-columns:repeat(3, 1fr); gap:1px;
+  background:var(--line); border:1px solid var(--line);
+}
+.protocolo-block{background:var(--bg-card); padding:30px 28px;}
+.protocolo-block .label{font-size:12px; color:var(--gold-light); margin-bottom:10px; letter-spacing:0.03em;}
+.protocolo-block p{font-size:15px; color:var(--muted);}
+
+/* vídeo */
+.video-section{background:var(--bg-elevated); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+.video-embed{
+  margin:0 auto; max-width:240px;
+  border:1px solid var(--line);
+}
+.video-embed video{width:100%; display:block; aspect-ratio:9/16; object-fit:contain; background:#000;}
+.video-embed .video-label{
+  font-size:12px; color:var(--muted); padding:10px 2px 0; letter-spacing:0.03em; text-align:center;
+}
+
+/* bastidores do atendimento */
+.bastidores{border-top:1px solid var(--line);}
+.bastidores-grid{display:grid; grid-template-columns:0.85fr 1.15fr; gap:56px; align-items:center;}
+.bastidores-photo{aspect-ratio:3/4;}
+.bastidores h2{font-size:clamp(24px,3vw,32px); margin-bottom:16px;}
+.bastidores p{font-size:15px; color:var(--muted); max-width:52ch;}
+.bastidores-videos{display:flex; gap:20px; justify-content:center; flex-wrap:wrap;}
+.bastidores-videos .video-embed{margin:0;}
+.bastidores-caption{text-align:center; color:var(--muted); font-size:14px; margin-top:28px; max-width:52ch; margin-left:auto; margin-right:auto;}
+
+/* sobre a médica — versão curta */
+.sobre-mini{background:var(--bg-elevated); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+.sobre-mini-grid{display:grid; grid-template-columns:0.8fr 1.2fr; gap:56px; align-items:start;}
+.sobre-mini-photo{aspect-ratio:2/3;}
+.sobre-mini h2{font-size:clamp(24px,3vw,32px); margin-bottom:6px;}
+.sobre-crm{font-size:14px; color:var(--gold-light); margin-bottom:20px;}
+.sobre-mini p{font-size:15px; color:var(--muted); margin-bottom:22px; max-width:58ch;}
+.diferenciais{list-style:none;}
+.diferenciais li{
+  font-size:14px; color:var(--muted); padding:10px 0 10px 22px; position:relative;
+  border-top:1px solid var(--line);
+}
+.diferenciais li:before{content:'—'; position:absolute; left:0; color:var(--gold);}
+
+/* contato */
+.contato{border-top:1px solid var(--line);}
+.contato-grid{display:grid; grid-template-columns:1fr 1fr; gap:72px;}
+.contato h2{font-size:clamp(26px,3vw,34px); margin-bottom:18px;}
+.contato p.sub{color:var(--muted); font-size:15px; max-width:44ch; margin-bottom:32px;}
+.contato-info{margin-top:32px;}
+.contato-info div{font-size:14px; color:var(--muted); padding:14px 0; border-top:1px solid var(--line);}
+.contato-info div strong{color:var(--cream); font-weight:500; display:block; margin-bottom:4px; font-size:13px;}
+form{display:flex; flex-direction:column; gap:18px;}
+form input, form textarea{
+  background:transparent; border:none; border-bottom:1px solid var(--line-strong);
+  color:var(--cream); font-family:'Work Sans',sans-serif; font-size:15px;
+  padding:12px 2px; font-weight:300; width:100%;
+}
+form input[readonly]{color:var(--gold-light); border-color:var(--gold);}
+form input::placeholder, form textarea::placeholder{color:var(--muted);}
+form input:focus, form textarea:focus{outline:none; border-color:var(--gold);}
+form textarea{resize:vertical; min-height:90px;}
+form button{margin-top:10px; align-self:flex-start;}
+.form-note{font-size:12px; color:var(--muted); margin-top:6px;}
+
+/* footer */
+footer{padding:48px 0 36px; border-top:1px solid var(--line);}
+.footer-grid{display:flex; justify-content:space-between; flex-wrap:wrap; gap:32px; margin-bottom:32px;}
+.footer-brand .initials{font-family:'Fraunces', serif; font-size:20px;}
+.footer-brand p{font-size:13px; color:var(--muted); margin-top:10px; max-width:32ch;}
+.footer-col h5{font-size:12px; letter-spacing:0.05em; color:var(--gold-light); margin-bottom:14px; font-weight:500;}
+.footer-col a{display:block; font-size:14px; color:var(--muted); margin-bottom:10px;}
+.footer-col a:hover{color:var(--cream);}
+.footer-legal{
+  font-size:12px; color:var(--muted); border-top:1px solid var(--line);
+  padding-top:24px; line-height:1.7;
+}
+.footer-legal strong{color:var(--cream); font-weight:400;}
+
+/* botão flutuante WhatsApp */
+.whatsapp-float{
+  position:fixed; right:24px; bottom:24px; z-index:200;
+  width:56px; height:56px; border-radius:50%;
+  background:#25D366; display:flex; align-items:center; justify-content:center;
+  box-shadow:0 4px 14px rgba(0,0,0,0.35);
+  transition:transform 0.2s;
+}
+.whatsapp-float:hover{transform:scale(1.06);}
+.whatsapp-float svg{width:30px; height:30px; fill:#fff; display:block;}
+
+@media (max-width: 860px){
+  .whatsapp-float{right:16px; bottom:16px; width:52px; height:52px;}
+  .whatsapp-float svg{width:28px; height:28px;}
+  .hero-grid, .sobre-mini-grid, .bastidores-grid, .contato-grid{grid-template-columns:1fr;}
+  .protocolo-blocks{grid-template-columns:1fr;}
+  section{padding:60px 0;}
+  .wrap{padding:0 20px;}
+  .btn-outline{margin-left:0; margin-top:12px; display:block; text-align:center;}
+  .btn-primary{display:block; text-align:center;}
+  header .wrap{height:auto; padding-top:16px; padding-bottom:16px; flex-wrap:wrap;}
+}

@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dra. Letícia Ávila — Dermatologia Estética</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #14120D;
+    --bg-elevated: #1C1911;
+    --bg-card: #1F1B13;
+    --gold: #B08D3E;
+    --gold-light: #D9BD7C;
+    --cream: #F2ECDD;
+    --muted: #9C9384;
+    --line: rgba(242,236,221,0.12);
+    --line-strong: rgba(242,236,221,0.22);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--cream);
+    font-family:'Work Sans', sans-serif;
+    font-weight:300;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%; display:block;}
+  a{color:inherit; text-decoration:none;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 32px;}
+  h1,h2,h3{font-family:'Fraunces', serif; font-weight:400; letter-spacing:-0.01em;}
+
+  /* placeholder photo blocks */
+  .photo-ph{
+    background:
+      linear-gradient(160deg, #2A251A 0%, #17150F 100%);
+    border:1px solid var(--line);
+    display:flex; align-items:flex-end; justify-content:flex-start;
+    position:relative; overflow:hidden;
+    min-height:280px;
+  }
+  .photo-ph::before{
+    content:'';
+    position:absolute; inset:0;
+    background:
+      repeating-linear-gradient(45deg, rgba(242,236,221,0.025) 0 2px, transparent 2px 14px);
+  }
+  .photo-ph span{
+    position:relative; z-index:1;
+    font-size:12px; color:var(--muted); letter-spacing:0.05em;
+    padding:14px 16px; font-family:'Work Sans', sans-serif;
+  }
+  .photo-real{
+    border:1px solid var(--line); overflow:hidden; min-height:280px;
+  }
+  .photo-real img{width:100%; height:100%; object-fit:cover; display:block;}
+
+  /* header */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:var(--bg);
+    border-bottom:1px solid var(--line);
+  }
+  header .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    height:84px;
+  }
+  .brand{display:flex; flex-direction:column; line-height:1.1;}
+  .brand .initials{font-family:'Fraunces', serif; font-size:22px; letter-spacing:0.06em;}
+  .brand .name{font-size:10px; color:var(--muted); letter-spacing:0.08em; margin-top:2px;}
+  nav{display:flex; align-items:center; gap:40px;}
+  nav a{font-size:14px; color:var(--cream); opacity:0.85; transition:opacity 0.2s;}
+  nav a:hover{opacity:1; color:var(--gold-light);}
+  .nav-cta{
+    border:1px solid var(--gold); color:var(--gold-light) !important;
+    padding:9px 20px; font-size:13px; opacity:1 !important;
+  }
+  .nav-cta:hover{background:var(--gold); color:var(--bg) !important;}
+
+  .mobile-toggle{
+    display:none; background:none; border:none; cursor:pointer;
+    width:32px; height:24px; position:relative; padding:0;
+  }
+  .mobile-toggle span{
+    position:absolute; left:0; width:100%; height:1px; background:var(--cream);
+    transition:transform 0.25s, opacity 0.25s;
+  }
+  .mobile-toggle span:nth-child(1){top:0;}
+  .mobile-toggle span:nth-child(2){top:11px;}
+  .mobile-toggle span:nth-child(3){top:22px;}
+  header.open .mobile-toggle span:nth-child(1){transform:translateY(11px) rotate(45deg);}
+  header.open .mobile-toggle span:nth-child(2){opacity:0;}
+  header.open .mobile-toggle span:nth-child(3){transform:translateY(-11px) rotate(-45deg);}
+
+  /* hero */
+  .hero{padding:64px 0 96px;}
+  .hero-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;
+  }
+  .hero-photo{aspect-ratio:2/3; min-height:auto;}
+  .eyebrow{
+    font-size:13px; color:var(--gold-light); letter-spacing:0.04em; margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:clamp(34px, 4vw, 52px); line-height:1.12; margin-bottom:22px;
+  }
+  .hero h1 em{color:var(--gold-light); font-style:normal;}
+  .hero p.sub{
+    font-size:16px; color:var(--muted); max-width:46ch; margin-bottom:34px;
+  }
+  .btn-primary{
+    display:inline-block; background:var(--gold); color:var(--bg);
+    padding:15px 30px; font-size:14px; font-weight:500; letter-spacing:0.02em;
+    transition:background 0.2s;
+  }
+  .btn-primary:hover{background:var(--gold-light);}
+  .btn-outline{
+    display:inline-block; border:1px solid var(--line-strong); color:var(--cream);
+    padding:14px 28px; font-size:14px; margin-left:14px;
+  }
+  .btn-outline:hover{border-color:var(--gold);}
+
+  /* section shared */
+  section{padding:96px 0;}
+  .section-head{max-width:640px; margin-bottom:56px;}
+  .section-head .eyebrow{margin-bottom:14px;}
+  .section-head h2{font-size:clamp(28px, 3vw, 38px); line-height:1.2;}
+  .divider{border:none; border-top:1px solid var(--line); margin:0;}
+
+  /* protocol selector */
+  .selector-grid{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .selector-card{
+    background:var(--bg); padding:0; display:flex; flex-direction:column;
+    transition:background 0.25s;
+  }
+  .selector-card:hover{background:var(--bg-elevated);}
+  .selector-card .photo-ph, .selector-card .photo-real{min-height:220px; border:none; border-bottom:1px solid var(--line);}
+  .selector-card-body{padding:28px 26px 32px;}
+  .selector-card h3{font-size:22px; margin-bottom:10px;}
+  .selector-card p{font-size:14px; color:var(--muted); margin-bottom:20px; min-height:44px;}
+  .selector-link{font-size:13px; color:var(--gold-light); border-bottom:1px solid var(--gold);
+    padding-bottom:3px; display:inline-block;}
+
+  /* sobre */
+  .sobre{background:var(--bg-elevated); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .sobre-grid{display:grid; grid-template-columns:0.85fr 1.15fr; gap:72px; align-items:start;}
+  .sobre-photo{aspect-ratio:2/3;}
+  .sobre-content h2{font-size:clamp(26px,3vw,34px); margin-bottom:6px;}
+  .sobre-crm{font-size:14px; color:var(--gold-light); margin-bottom:24px;}
+  .sobre-content p{font-size:15.5px; color:var(--muted); margin-bottom:18px; max-width:58ch;}
+  .lists{display:grid; grid-template-columns:1fr 1fr; gap:40px; margin-top:36px;}
+  .lists h4{font-family:'Work Sans',sans-serif; font-size:12px; letter-spacing:0.06em;
+    color:var(--cream); margin-bottom:16px; font-weight:500;}
+  .lists ul{list-style:none;}
+  .lists li{
+    font-size:14px; color:var(--muted); padding:10px 0 10px 22px; position:relative;
+    border-top:1px solid var(--line);
+  }
+  .lists li:before{
+    content:'—'; position:absolute; left:0; color:var(--gold);
+  }
+
+  /* protocolos detalhados */
+  .protocolos{}
+  .protocolo-row{
+    display:grid; grid-template-columns:0.9fr 1.1fr; gap:56px;
+    padding:56px 0; border-top:1px solid var(--line); align-items:center;
+  }
+  .protocolo-row:last-child{border-bottom:1px solid var(--line);}
+  .protocolo-row:nth-child(even) .protocolo-photo{order:2;}
+  .protocolo-num{font-size:13px; color:var(--gold); margin-bottom:10px; letter-spacing:0.04em;}
+  .protocolo-row h3{font-size:30px; margin-bottom:16px;}
+  .protocolo-photo{aspect-ratio:5/4;}
+  .protocolo-block{margin-bottom:18px;}
+  .protocolo-block .label{font-size:12px; color:var(--gold-light); margin-bottom:6px; letter-spacing:0.03em;}
+  .protocolo-block p{font-size:15px; color:var(--muted);}
+  .protocolo-row .btn-primary{margin-top:8px;}
+  .video-embed{
+    margin:22px 0; max-width:220px;
+    border:1px solid var(--line);
+  }
+  .video-embed video{width:100%; display:block; aspect-ratio:9/16; object-fit:contain; background:#000;}
+  .video-embed .video-label{
+    font-size:11px; color:var(--muted); padding:8px 2px 0; letter-spacing:0.03em;
+  }
+
+  /* contato */
+  .contato{background:var(--bg-elevated); border-top:1px solid var(--line);}
+  .contato-grid{display:grid; grid-template-columns:1fr 1fr; gap:72px;}
+  .contato h2{font-size:clamp(26px,3vw,34px); margin-bottom:18px;}
+  .contato p.sub{color:var(--muted); font-size:15px; max-width:44ch; margin-bottom:32px;}
+  .contato-info{margin-top:32px;}
+  .contato-info div{font-size:14px; color:var(--muted); padding:14px 0; border-top:1px solid var(--line);}
+  .contato-info div strong{color:var(--cream); font-weight:500; display:block; margin-bottom:4px; font-size:13px;}
+  form{display:flex; flex-direction:column; gap:18px;}
+  form input, form textarea, form select{
+    background:transparent; border:none; border-bottom:1px solid var(--line-strong);
+    color:var(--cream); font-family:'Work Sans',sans-serif; font-size:15px;
+    padding:12px 2px; font-weight:300;
+  }
+  form select option{background:var(--bg);}
+  form input::placeholder, form textarea::placeholder{color:var(--muted);}
+  form input:focus, form textarea:focus, form select:focus{outline:none; border-color:var(--gold);}
+  form textarea{resize:vertical; min-height:90px;}
+  form button{margin-top:10px; align-self:flex-start;}
+  .form-note{font-size:12px; color:var(--muted); margin-top:6px;}
+
+  /* footer */
+  footer{padding:56px 0 40px; border-top:1px solid var(--line);}
+  .footer-grid{display:flex; justify-content:space-between; flex-wrap:wrap; gap:32px; margin-bottom:40px;}
+  .footer-brand .initials{font-family:'Fraunces', serif; font-size:20px;}
+  .footer-brand p{font-size:13px; color:var(--muted); margin-top:10px; max-width:32ch;}
+  .footer-col h5{font-size:12px; letter-spacing:0.05em; color:var(--gold-light); margin-bottom:14px; font-weight:500;}
+  .footer-col a{display:block; font-size:14px; color:var(--muted); margin-bottom:10px;}
+  .footer-col a:hover{color:var(--cream);}
+  .footer-legal{
+    font-size:12px; color:var(--muted); border-top:1px solid var(--line);
+    padding-top:24px; line-height:1.7;
+  }
+  .footer-legal strong{color:var(--cream); font-weight:400;}
+
+  /* botão flutuante WhatsApp */
+  .whatsapp-float{
+    position:fixed; right:24px; bottom:24px; z-index:200;
+    width:56px; height:56px; border-radius:50%;
+    background:#25D366; display:flex; align-items:center; justify-content:center;
+    box-shadow:0 4px 14px rgba(0,0,0,0.35);
+    transition:transform 0.2s;
+  }
+  .whatsapp-float:hover{transform:scale(1.06);}
+  .whatsapp-float svg{width:30px; height:30px; fill:#fff; display:block;}
+
+  @media (max-width: 860px){
+    .mobile-toggle{display:block;}
+    .whatsapp-float{right:16px; bottom:16px; width:52px; height:52px;}
+    .whatsapp-float svg{width:28px; height:28px;}
+    nav{
+      display:flex; flex-direction:column; align-items:flex-start; gap:0;
+      position:fixed; top:84px; left:0; right:0; bottom:0;
+      background:var(--bg); padding:12px 24px 32px;
+      transform:translateX(100%); transition:transform 0.3s ease;
+    }
+    header.open nav{transform:translateX(0);}
+    nav a{width:100%; padding:16px 0; border-bottom:1px solid var(--line); opacity:1;}
+    .nav-cta{border:1px solid var(--gold); text-align:center; margin-top:20px; padding:14px 20px;}
+    .hero-grid, .sobre-grid, .contato-grid{grid-template-columns:1fr;}
+    .selector-grid{grid-template-columns:1fr;}
+    .lists{grid-template-columns:1fr;}
+    .protocolo-row, .protocolo-row:nth-child(even){grid-template-columns:1fr;}
+    .protocolo-row:nth-child(even) .protocolo-photo{order:0;}
+    section{padding:64px 0;}
+    .wrap{padding:0 20px;}
+    .btn-outline{margin-left:0; margin-top:12px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brand">
+      <span class="initials">LA</span>
+      <span class="name">Dra. Letícia Ávila</span>
+    </div>
+    <nav>
+      <a href="#inicio">Início</a>
+      <a href="#protocolos">Protocolos</a>
+      <a href="#medica">A Médica</a>
+      <a href="#contato">Contato</a>
+      <a href="#contato" class="nav-cta">Agendar avaliação</a>
+    </nav>
+    <button class="mobile-toggle" id="menuToggle" aria-label="Abrir menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+<script>
+  (function(){
+    var header = document.querySelector('header');
+    var btn = document.getElementById('menuToggle');
+    var links = document.querySelectorAll('header nav a');
+    btn.addEventListener('click', function(){
+      header.classList.toggle('open');
+    });
+    links.forEach(function(a){
+      a.addEventListener('click', function(){ header.classList.remove('open'); });
+    });
+  })();
+</script>
+
+<section class="hero" id="inicio">
+  <div class="wrap hero-grid">
+    <div class="photo-real hero-photo">
+      <img src="img/dra-leticia-hero.jpg" alt="Dra. Letícia Ávila">
+    </div>
+    <div>
+      <div class="eyebrow">Dra. Letícia Ávila</div>
+      <h1>Beleza com <em>Naturalidade</em>,<br>Ciência por Trás</h1>
+      <p class="sub">CRM-GO 17127.<br>Desenvolvo protocolos personalizados que unem conhecimento científico atualizado e precisão técnica, com o objetivo de resultados sofisticados, naturais e seguros — sempre respeitando as características individuais de cada paciente.</p>
+      <a href="#protocolos" class="btn-primary">Conhecer protocolos</a>
+      <a href="#contato" class="btn-outline">Agendar avaliação</a>
+    </div>
+  </div>
+</section>
+
+<section id="protocolos">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Protocolos exclusivos</div>
+      <h2>Qual protocolo é para você?</h2>
+    </div>
+    <div class="selector-grid">
+
+      <div class="selector-card">
+        <div class="photo-real"><img src="img/protocolo-start-care.jpg" alt="Protocolo Start Care"></div>
+        <div class="selector-card-body">
+          <h3>Start Care</h3>
+          <p>Reestruturação e firmeza para o seu rosto, cuidando de todas as suas camadas.</p>
+          <a href="start-care.html" class="selector-link">Conhecer o Start Care</a>
+        </div>
+      </div>
+
+      <div class="selector-card">
+        <div class="photo-real"><img src="img/protocolo-shape-arms.jpg" alt="Protocolo Shape Arms"></div>
+        <div class="selector-card-body">
+          <h3>Shape Arms</h3>
+          <p>Contorno de ombros e braços que valoriza o resultado do seu treino.</p>
+          <a href="shape-arms.html" class="selector-link">Conhecer o Shape Arms</a>
+        </div>
+      </div>
+
+      <div class="selector-card">
+        <div class="photo-real"><img src="img/protocolo-bumbum-up.jpg" alt="Protocolo Bumbum Up"></div>
+        <div class="selector-card-body">
+          <h3>Bumbum Up</h3>
+          <p>Protocolo para equilíbrio de volume e contorno glúteo.</p>
+          <a href="bumbum-up.html" class="selector-link">Conhecer o Bumbum Up</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="sobre" id="medica">
+  <div class="wrap sobre-grid">
+    <div class="photo-real sobre-photo">
+      <img src="img/dra-leticia-sobre.jpg" alt="Dra. Letícia Ávila">
+    </div>
+    <div class="sobre-content">
+      <h2>Dra. Letícia Ávila</h2>
+      <div class="sobre-crm">Médica — CRM-GO 17127 · Especialista em Dermatologia Estética</div>
+      <p>Formada pela Universidade Federal de Goiás (UFG), com Residência Médica em Otorrinolaringologia, a Dra. Letícia Ávila construiu sua trajetória entre a medicina hospitalar e a estética.</p>
+      <p>Desde 2016, atua na Secretaria de Saúde do Distrito Federal, com experiência direta no atendimento de intercorrências, urgências e emergências — uma vivência que reforça o rigor técnico e a segurança com que conduz cada procedimento estético.</p>
+      <p>É especialista em Dermatologia Estética e professora na Pós-Graduação do IPM Pós, formando outros médicos nas técnicas que aplica em sua própria prática clínica.</p>
+
+      <div class="lists">
+        <div>
+          <h4>Áreas de atuação</h4>
+          <ul>
+            <li>Dermatologia estética</li>
+            <li>Protocolos faciais personalizados</li>
+            <li>Harmonização e contorno corporal</li>
+            <li>Preenchimento com ácido hialurônico</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Diferenciais</h4>
+          <ul>
+            <li>Base em anatomia da face e pescoço (Otorrinolaringologia)</li>
+            <li>Experiência em Urgência e Emergência</li>
+            <li>Professora de pós-graduação no IPM Pós</li>
+            <li>Protocolos próprios: Start Care®, Shape Arms®, Bumbum Up®</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="protocolos">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Em detalhe</div>
+      <h2>Os protocolos</h2>
+    </div>
+
+    <div class="protocolo-row" id="start-care">
+      <div class="photo-real protocolo-photo"><img src="img/protocolo-start-care.jpg" alt="Protocolo Start Care"></div>
+      <div>
+        <div class="protocolo-num">Start Care</div>
+        <h3>Reestruturação e firmeza da pele</h3>
+        <div class="protocolo-block">
+          <div class="label">O que é</div>
+          <p>Protocolo desenvolvido para cuidar da firmeza e estrutura da pele do rosto, atuando em todas as suas camadas.</p>
+        </div>
+        <div class="protocolo-block">
+          <div class="label">Para quem é</div>
+          <p>Indicado para quem percebe sinais de flacidez, perda de firmeza ou marcas de expressão e busca iniciar um cuidado gradual, respeitando as características individuais de cada pele.</p>
+        </div>
+        <div class="protocolo-block">
+          <div class="label">Como atua</div>
+          <p>Trabalha a reestruturação do seu rosto, com foco em firmeza e prevenção — sem buscar um resultado artificial.</p>
+        </div>
+        <div class="video-embed">
+          <video controls playsinline preload="none" poster="img/protocolo-start-care.jpg">
+            <source src="video/protocolo-start-care.mp4" type="video/mp4">
+          </video>
+          <div class="video-label">A Dra. Letícia explica o Start Care</div>
+        </div>
+        <a href="#contato" class="btn-primary">Quero saber se é indicado para mim</a>
+      </div>
+    </div>
+
+    <div class="protocolo-row" id="shape-arms">
+      <div class="photo-real protocolo-photo"><img src="img/protocolo-shape-arms.jpg" alt="Protocolo Shape Arms"></div>
+      <div>
+        <div class="protocolo-num">Shape Arms</div>
+        <h3>Contorno para ombros e braços</h3>
+        <div class="protocolo-block">
+          <div class="label">O que é</div>
+          <p>Protocolo de contorno para ombros e braços, pensado para complementar o resultado de treino físico.</p>
+        </div>
+        <div class="protocolo-block">
+          <div class="label">Para quem é</div>
+          <p>Para quem já treina, ganhou massa muscular, mas sente que falta definição e acabamento no contorno do ombro e braço.</p>
+        </div>
+        <div class="protocolo-block">
+          <div class="label">Como atua</div>
+          <p>Atua em pontos estratégicos da região para valorizar o contorno natural já conquistado na academia — sem criar volume artificial, apenas realçando o desenho existente.</p>
+        </div>
+        <div class="video-embed">
+          <video controls playsinline preload="none" poster="img/protocolo-shape-arms.jpg">
+            <source src="video/protocolo-shape-arms.mp4" type="video/mp4">
+          </video>
+          <div class="video-label">A Dra. Letícia explica o Shape Arms</div>
+        </div>
+        <a href="#contato" class="btn-primary">Quero conhecer o Shape Arms</a>
+      </div>
+    </div>
+
+    <div class="protocolo-row" id="bumbum-up">
+      <div class="photo-real protocolo-photo"><img src="img/protocolo-bumbum-up.jpg" alt="Protocolo Bumbum Up"></div>
+      <div>
+        <div class="protocolo-num">Bumbum Up</div>
+        <h3>Ácido hialurônico para região glútea</h3>
+        <div class="protocolo-block">
+          <div class="label">O que é</div>
+          <p>Protocolo para tratamento da região Glútea.</p>
+        </div>
+        <div class="protocolo-block">
+          <div class="label">Para quem é</div>
+          <p>Indicado para queixas como afundamento da lateral do glúteo (a chamada "poça trocantérica") e para quem busca mais projeção na região.</p>
+        </div>
+        <div class="protocolo-block">
+          <div class="label">Como atua</div>
+          <p>Preenchimento com ácido hialurônico e bioestimuladores de colágeno para equilibrar o volume entre as regiões do quadril e glúteo, de forma personalizada para a anatomia de cada paciente.</p>
+        </div>
+        <div class="video-embed">
+          <video controls playsinline preload="none" poster="img/protocolo-bumbum-up.jpg">
+            <source src="video/protocolo-bumbum-up.mp4" type="video/mp4">
+          </video>
+          <div class="video-label">A Dra. Letícia explica o Bumbum Up</div>
+        </div>
+        <a href="#contato" class="btn-primary">Quero conhecer o Bumbum Up</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="contato" id="contato">
+  <div class="wrap contato-grid">
+    <div>
+      <div class="eyebrow">Agende sua avaliação</div>
+      <h2>Fale com a Dra. Letícia</h2>
+      <p class="sub">Preencha o formulário ao lado ou entre em contato diretamente — nossa equipe retorna para agendar sua avaliação individual.</p>
+      <div class="contato-info">
+        <div><strong>Clínica</strong>Clínica Ana Rassi</div>
+        <div><strong>CRM</strong>CRM-GO 17127 — Dra. Letícia de Ávila Cambraia</div>
+        <div><strong>E-mail</strong>contato@draleticiaavila.com</div>
+      </div>
+    </div>
+    <form onsubmit="return enviarParaWhatsApp(this);">
+      <input type="text" id="nome" placeholder="Nome completo" required>
+      <input type="tel" id="telefone" placeholder="Telefone / WhatsApp" required>
+      <select id="protocolo" required>
+        <option value="" disabled selected>Protocolo de interesse</option>
+        <option>Start Care</option>
+        <option>Shape Arms</option>
+        <option>Bumbum Up</option>
+        <option>Ainda não sei</option>
+      </select>
+      <textarea id="mensagem" placeholder="Mensagem (opcional)"></textarea>
+      <button type="submit" class="btn-primary">Enviar solicitação</button>
+      <div class="form-note">Ao enviar, abriremos o WhatsApp da clínica com sua mensagem pronta.</div>
+    </form>
+    <script src="js/contact-form.js"></script>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="initials">LA</span>
+        <p>Dermatologia estética conduzida com rigor técnico e respeito às características de cada paciente.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Navegação</h5>
+        <a href="#protocolos">Protocolos</a>
+        <a href="#medica">A médica</a>
+        <a href="#contato">Contato</a>
+      </div>
+      <div class="footer-col">
+        <h5>Redes</h5>
+        <a href="https://instagram.com/draleticiaavilac" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <strong>Dra. Letícia de Ávila Cambraia</strong> — CRM-GO 17127 · Clínica Ana Rassi<br>
+      Este material é de caráter informativo. Todo procedimento deve ser precedido de avaliação médica individual.
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/5562995397373?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es." target="_blank" rel="noopener" class="whatsapp-float" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.85.5 3.68 1.44 5.27L2 22l4.94-1.55a9.9 9.9 0 0 0 5.11 1.4h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.86 9.86 0 0 0 12.04 2zm5.83 14.11c-.25.7-1.45 1.34-2 1.42-.51.08-1.15.11-1.86-.12-.43-.14-.98-.32-1.68-.63-2.96-1.28-4.89-4.26-5.04-4.46-.15-.2-1.2-1.6-1.2-3.05 0-1.45.76-2.16 1.03-2.46.27-.3.59-.37.79-.37.2 0 .4 0 .57.01.18.01.43-.07.67.51.25.6.85 2.07.92 2.22.07.15.12.33.02.53-.1.2-.15.32-.3.5-.15.18-.31.4-.44.54-.15.15-.3.31-.13.61.17.3.76 1.25 1.63 2.02 1.12 1 2.06 1.31 2.36 1.46.3.15.48.13.65-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.67-.15.27.1 1.73.82 2.02.97.3.15.5.22.57.35.07.13.07.75-.18 1.45z"/></svg>
+</a>
+
+</body>
+</html>
