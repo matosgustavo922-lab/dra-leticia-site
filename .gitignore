@@ -1,0 +1,15 @@
+# Sistema operacional
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Editores
+.vscode/
+*.swp
+
+# Variáveis de ambiente / segredos
+.env
+.env.local
+
+# Logs
+*.log
