@@ -10,6 +10,7 @@ desktop.ini
 # Variáveis de ambiente / segredos
 .env
 .env.local
+api/tiktok-event.php
 
 # Logs
 *.log

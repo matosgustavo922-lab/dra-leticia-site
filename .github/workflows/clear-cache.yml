@@ -1,0 +1,22 @@
+name: Limpar cache do Hostinger
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  clear-cache:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Aguardar o deploy automático do Hostinger terminar
+        run: sleep 30
+
+      - name: Limpar cache (LiteSpeed + CDN) via API do Hostinger
+        env:
+          HOSTINGER_API_TOKEN: ${{ secrets.HOSTINGER_API_TOKEN }}
+          HOSTINGER_USERNAME: ${{ secrets.HOSTINGER_USERNAME }}
+        run: |
+          curl -sf -X DELETE \
+            "https://developers.hostinger.com/api/hosting/v1/accounts/${HOSTINGER_USERNAME}/websites/draleticiaavila.com/cache/clear" \
+            -H "Authorization: Bearer ${HOSTINGER_API_TOKEN}" \
+            -H "Content-Type: application/json"

@@ -74,6 +74,12 @@ header .wrap{
   padding:14px 28px; font-size:14px; margin-left:14px;
 }
 .btn-outline:hover{border-color:var(--gold);}
+.btn-whatsapp{
+  display:inline-block; background:#25D366; color:#fff;
+  padding:15px 30px; font-size:14px; font-weight:500; letter-spacing:0.02em;
+  margin-top:14px; transition:background 0.2s;
+}
+.btn-whatsapp:hover{background:#1ebe5b;}
 
 /* section shared */
 section{padding:88px 0;}
@@ -126,6 +132,18 @@ section{padding:88px 0;}
 }
 .diferenciais li:before{content:'—'; position:absolute; left:0; color:var(--gold);}
 
+/* depoimentos */
+.depoimentos-grid{
+  display:grid; grid-template-columns:repeat(3, 1fr); gap:1px;
+  background:var(--line); border:1px solid var(--line);
+}
+.depoimento-card{background:var(--bg-card); padding:32px 28px;}
+.depoimento-card blockquote{
+  font-family:'Fraunces', serif; font-style:italic; font-size:16.5px;
+  color:var(--cream); line-height:1.55; margin-bottom:18px;
+}
+.depoimento-card cite{font-style:normal; font-size:12.5px; color:var(--gold-light); letter-spacing:0.02em;}
+
 /* contato */
 .contato{border-top:1px solid var(--line);}
 .contato-grid{display:grid; grid-template-columns:1fr 1fr; gap:72px;}
@@ -177,9 +195,11 @@ footer{padding:48px 0 36px; border-top:1px solid var(--line);}
   .whatsapp-float svg{width:28px; height:28px;}
   .hero-grid, .sobre-mini-grid, .bastidores-grid, .contato-grid{grid-template-columns:1fr;}
   .protocolo-blocks{grid-template-columns:1fr;}
+  .depoimentos-grid{grid-template-columns:1fr;}
   section{padding:60px 0;}
   .wrap{padding:0 20px;}
   .btn-outline{margin-left:0; margin-top:12px; display:block; text-align:center;}
   .btn-primary{display:block; text-align:center;}
+  .btn-whatsapp{display:block; text-align:center;}
   header .wrap{height:auto; padding-top:16px; padding-bottom:16px; flex-wrap:wrap;}
 }
