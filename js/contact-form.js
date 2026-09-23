@@ -16,6 +16,18 @@
     });
 
     try {
+      if (typeof window.fbq === 'function') {
+        window.fbq('track', 'Contact', {}, { eventID: eventId });
+      }
+    } catch (e) {}
+
+    try {
+      if (window.ttq && typeof window.ttq.track === 'function') {
+        window.ttq.track('Contact', {}, { event_id: eventId });
+      }
+    } catch (e) {}
+
+    try {
       var payload = JSON.stringify({
         event_id: eventId,
         event_name: 'Contact',
