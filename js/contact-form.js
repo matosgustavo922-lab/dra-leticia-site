@@ -1,5 +1,40 @@
 (function(){
   var WHATSAPP_NUMBER = '5562995397373';
+  var UTM_STORAGE_KEY = 'dla_utm_source';
+
+  function captureUtmSource(){
+    try {
+      var params = new URLSearchParams(window.location.search);
+      var utm = params.get('utm_source');
+      if (utm) {
+        sessionStorage.setItem(UTM_STORAGE_KEY, utm.toLowerCase());
+      }
+    } catch (e) {}
+  }
+
+  function getOrigem(){
+    try {
+      var utm = sessionStorage.getItem(UTM_STORAGE_KEY);
+      if (utm === 'meta') return 'meta';
+      if (utm === 'instagram') return 'instagram';
+      return 'site';
+    } catch (e) {
+      return 'site';
+    }
+  }
+
+  function buildProtocolMessage(protocolo){
+    var origem = getOrigem();
+    if (origem === 'meta') {
+      return 'Olá! Vi o anúncio do ' + protocolo + ' e quero saber se é indicado pro meu caso.';
+    }
+    if (origem === 'instagram') {
+      return 'Olá! Vi o ' + protocolo + ' no Instagram da Dra. Letícia e quero saber se é indicado pro meu caso.';
+    }
+    return 'Olá! Vi o ' + protocolo + ' no site da Dra. Letícia e quero saber se é indicado pro meu caso.';
+  }
+
+  captureUtmSource();
 
   function generateEventId(){
     return 'evt_' + Date.now() + '_' + Math.random().toString(36).slice(2, 10);
@@ -80,14 +115,26 @@
     return false;
   };
 
+  function applyProtocolMessage(a){
+    try {
+      var protocolo = a.getAttribute('data-protocolo');
+      if (protocolo) {
+        var texto = buildProtocolMessage(protocolo);
+        a.href = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(texto);
+      }
+    } catch (e) {}
+  }
+
   document.addEventListener('DOMContentLoaded', function(){
     document.querySelectorAll('a.whatsapp-float').forEach(function(a){
+      applyProtocolMessage(a);
       a.addEventListener('click', function(){
         trackWhatsappContact();
         trackWhatsappClick('flutuante');
       });
     });
     document.querySelectorAll('a.btn-whatsapp').forEach(function(a){
+      applyProtocolMessage(a);
       a.addEventListener('click', function(){
         trackWhatsappContact();
         trackWhatsappClick('hero');
