@@ -1,61 +1,61 @@
 {
   "exportFormatVersion": 2,
-  "exportTime": "2026-09-28 00:00:00",
+  "exportTime": "2026-09-29 00:00:00",
   "containerVersion": {
-    "path": "accounts/0/containers/0/versions/0",
-    "accountId": "0",
-    "containerId": "0",
+    "path": "accounts/6377822153/containers/264639240/versions/0",
+    "accountId": "6377822153",
+    "containerId": "264639240",
     "containerVersionId": "0",
     "container": {
-      "path": "accounts/0/containers/0",
-      "accountId": "0",
-      "containerId": "0",
+      "path": "accounts/6377822153/containers/264639240",
+      "accountId": "6377822153",
+      "containerId": "264639240",
       "name": "draleticiaavila.com",
       "publicId": "GTM-TRNMXM3N",
       "usageContext": ["WEB"],
       "fingerprint": "0",
-      "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/0/containers/0/workspaces/0"
+      "tagManagerUrl": "https://tagmanager.google.com/#/container/accounts/6377822153/containers/264639240/workspaces/0"
     },
     "tag": [
       {
-        "accountId": "0",
-        "containerId": "0",
+        "accountId": "6377822153",
+        "containerId": "264639240",
         "tagId": "1",
         "name": "[GA4] Configuração - Todas as páginas",
-        "type": "gaawc",
+        "type": "googtag",
         "parameter": [
-          { "type": "template", "key": "measurementId", "value": "{{[GA4] ID de métricas}}" }
+          { "type": "TEMPLATE", "key": "tagId", "value": "{{[GA4] ID de métricas}}" }
         ],
         "fingerprint": "0",
         "firingTriggerId": ["2147479553"],
         "tagFiringOption": "ONCE_PER_EVENT"
       },
       {
-        "accountId": "0",
-        "containerId": "0",
+        "accountId": "6377822153",
+        "containerId": "264639240",
         "tagId": "2",
         "name": "[GA4] Evento - clique_whatsapp",
         "type": "gaawe",
         "parameter": [
-          { "type": "template", "key": "measurementIdOverride", "value": "{{[GA4] ID de métricas}}" },
-          { "type": "boolean", "key": "sendEcommerceData", "value": "false" },
-          { "type": "template", "key": "eventName", "value": "clique_whatsapp" },
+          { "type": "TEMPLATE", "key": "measurementIdOverride", "value": "{{[GA4] ID de métricas}}" },
+          { "type": "BOOLEAN", "key": "sendEcommerceData", "value": "false" },
+          { "type": "TEMPLATE", "key": "eventName", "value": "clique_whatsapp" },
           {
-            "type": "list",
+            "type": "LIST",
             "key": "eventParameters",
             "list": [
               {
-                "type": "map",
+                "type": "MAP",
                 "map": [
-                  { "type": "template", "key": "parameter", "value": "pagina" },
-                  { "type": "template", "key": "parameterValue", "value": "{{[GA4] pagina}}" }
+                  { "type": "TEMPLATE", "key": "parameter", "value": "pagina" },
+                  { "type": "TEMPLATE", "key": "parameterValue", "value": "{{[GA4] pagina}}" }
                 ]
               },
               {
-                "type": "map",
+                "type": "MAP",
                 "map": [
-                  { "type": "template", "key": "parameter", "value": "posicao_botao" },
-                  { "type": "template", "key": "parameterValue", "value": "{{[GA4] posicao_botao}}" }
+                  { "type": "TEMPLATE", "key": "parameter", "value": "posicao_botao" },
+                  { "type": "TEMPLATE", "key": "parameterValue", "value": "{{[GA4] posicao_botao}}" }
                 ]
               }
             ]
@@ -68,8 +68,8 @@
     ],
     "trigger": [
       {
-        "accountId": "0",
-        "containerId": "0",
+        "accountId": "6377822153",
+        "containerId": "264639240",
         "triggerId": "1",
         "name": "[GA4] Evento - clique_whatsapp",
         "type": "customEvent",
@@ -77,8 +77,8 @@
           {
             "type": "equals",
             "parameter": [
-              { "type": "template", "key": "arg0", "value": "{{_event}}" },
-              { "type": "template", "key": "arg1", "value": "clique_whatsapp" }
+              { "type": "TEMPLATE", "key": "arg0", "value": "{{_event}}" },
+              { "type": "TEMPLATE", "key": "arg1", "value": "clique_whatsapp" }
             ]
           }
         ],
@@ -87,47 +87,47 @@
     ],
     "variable": [
       {
-        "accountId": "0",
-        "containerId": "0",
+        "accountId": "6377822153",
+        "containerId": "264639240",
         "variableId": "1",
         "name": "[GA4] ID de métricas",
         "type": "c",
         "parameter": [
-          { "type": "template", "key": "value", "value": "G-XXXXXXXXXX" }
+          { "type": "TEMPLATE", "key": "value", "value": "G-XXXXXXXXXX" }
         ],
         "fingerprint": "0"
       },
       {
-        "accountId": "0",
-        "containerId": "0",
+        "accountId": "6377822153",
+        "containerId": "264639240",
         "variableId": "2",
         "name": "[GA4] pagina",
         "type": "v",
         "parameter": [
-          { "type": "integer", "key": "dataLayerVersion", "value": "2" },
-          { "type": "boolean", "key": "setDefaultValue", "value": "false" },
-          { "type": "template", "key": "name", "value": "pagina" }
+          { "type": "INTEGER", "key": "dataLayerVersion", "value": "2" },
+          { "type": "BOOLEAN", "key": "setDefaultValue", "value": "false" },
+          { "type": "TEMPLATE", "key": "name", "value": "pagina" }
         ],
         "fingerprint": "0"
       },
       {
-        "accountId": "0",
-        "containerId": "0",
+        "accountId": "6377822153",
+        "containerId": "264639240",
         "variableId": "3",
         "name": "[GA4] posicao_botao",
         "type": "v",
         "parameter": [
-          { "type": "integer", "key": "dataLayerVersion", "value": "2" },
-          { "type": "boolean", "key": "setDefaultValue", "value": "false" },
-          { "type": "template", "key": "name", "value": "posicao_botao" }
+          { "type": "INTEGER", "key": "dataLayerVersion", "value": "2" },
+          { "type": "BOOLEAN", "key": "setDefaultValue", "value": "false" },
+          { "type": "TEMPLATE", "key": "name", "value": "posicao_botao" }
         ],
         "fingerprint": "0"
       }
     ],
     "fingerprint": "0",
     "resource": {
-      "accountId": "0",
-      "containerId": "0"
+      "accountId": "6377822153",
+      "containerId": "264639240"
     }
   }
 }
