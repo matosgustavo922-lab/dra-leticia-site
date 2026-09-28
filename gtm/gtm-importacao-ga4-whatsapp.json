@@ -27,7 +27,7 @@
           { "type": "TEMPLATE", "key": "tagId", "value": "{{[GA4] ID de métricas}}" }
         ],
         "fingerprint": "0",
-        "firingTriggerId": ["2147479553"],
+        "firingTriggerId": ["2147479573"],
         "tagFiringOption": "ONCE_PER_EVENT"
       },
       {
@@ -72,10 +72,10 @@
         "containerId": "264639240",
         "triggerId": "1",
         "name": "[GA4] Evento - clique_whatsapp",
-        "type": "customEvent",
+        "type": "CUSTOM_EVENT",
         "customEventFilter": [
           {
-            "type": "equals",
+            "type": "EQUALS",
             "parameter": [
               { "type": "TEMPLATE", "key": "arg0", "value": "{{_event}}" },
               { "type": "TEMPLATE", "key": "arg1", "value": "clique_whatsapp" }
