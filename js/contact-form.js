@@ -5,6 +5,17 @@
     return 'evt_' + Date.now() + '_' + Math.random().toString(36).slice(2, 10);
   }
 
+  function trackWhatsappClick(posicaoBotao){
+    try {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'clique_whatsapp',
+        pagina: window.location.pathname,
+        posicao_botao: posicaoBotao
+      });
+    } catch (e) {}
+  }
+
   function trackWhatsappContact(){
     var eventId = generateEventId();
 
@@ -62,6 +73,7 @@
       (mensagem ? '\nMensagem: ' + mensagem : '');
 
     trackWhatsappContact();
+    trackWhatsappClick('formulario_contato');
 
     var url = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(texto);
     window.open(url, '_blank', 'noopener');
@@ -69,8 +81,17 @@
   };
 
   document.addEventListener('DOMContentLoaded', function(){
-    document.querySelectorAll('a.whatsapp-float, a.btn-whatsapp').forEach(function(a){
-      a.addEventListener('click', function(){ trackWhatsappContact(); });
+    document.querySelectorAll('a.whatsapp-float').forEach(function(a){
+      a.addEventListener('click', function(){
+        trackWhatsappContact();
+        trackWhatsappClick('flutuante');
+      });
+    });
+    document.querySelectorAll('a.btn-whatsapp').forEach(function(a){
+      a.addEventListener('click', function(){
+        trackWhatsappContact();
+        trackWhatsappClick('hero');
+      });
     });
   });
 })();
